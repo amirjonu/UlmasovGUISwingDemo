@@ -3,10 +3,12 @@ import java.awt.event.*;
 
 public class MainGUIWindow extends JFrame implements ActionListener, KeyListener{
     private JPanel mainPanel;
-    private JTextField Username;
-    private JPasswordField Password;
-    private JLabel Iloveturtles;
-    private JButton YouAreAwsome;
+    private JTextArea myTextArea;
+    private JTextField textField1;
+    private JButton clickIfCoolButton;
+    private JButton clickIfVeryCoolButton;
+    private JLabel label1;
+    private JTextArea textArea1;
 
     public MainGUIWindow(){
         createUIComponents();
@@ -18,9 +20,9 @@ public class MainGUIWindow extends JFrame implements ActionListener, KeyListener
         setSize(300,400);
         setLocation(450,100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        YouAreAwsome.addActionListener(this);
-        Username.addKeyListener(this);
-        Password.addKeyListener(this);
+        clickIfCoolButton.addActionListener(this);
+        clickIfVeryCoolButton.addActionListener(this);
+        textField1.addKeyListener(this);
         setVisible(true);
     }
 
@@ -31,7 +33,11 @@ public class MainGUIWindow extends JFrame implements ActionListener, KeyListener
             JButton button = (JButton) source;
             String text = button.getText();
 
-            Iloveturtles.setText("I have sent ur info to a magical universe");
+            if (text.equals("Click if cool")){
+                myTextArea.append("button 1 clicked! ");
+            }else{
+                myTextArea.append("button 2 clicked! ");
+            }
         }
     }
 
@@ -39,7 +45,7 @@ public class MainGUIWindow extends JFrame implements ActionListener, KeyListener
     public void keyTyped(KeyEvent e){
         Object source = e.getSource();
         if (source instanceof JTextField){
-            Iloveturtles.setText("I enjoy playing with turtles");
+            myTextArea.append("Key typed");
 
         }
     }
@@ -48,7 +54,7 @@ public class MainGUIWindow extends JFrame implements ActionListener, KeyListener
     public void keyPressed(KeyEvent e){
         Object source = e.getSource();
         if (source instanceof JTextField){
-            Iloveturtles.setText("I have sent ur info to a magical universe");
+            myTextArea.append("Key pressed");
 
         }
     }
@@ -57,10 +63,8 @@ public class MainGUIWindow extends JFrame implements ActionListener, KeyListener
     public void keyReleased(KeyEvent e){
         Object source = e.getSource();
         if (source instanceof JTextField){
-            Iloveturtles.setText("I have sent ur info to a magical universe");
+            myTextArea.append("Key released");
 
         }
     }
-
-
 }
